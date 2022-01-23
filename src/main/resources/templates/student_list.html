@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+</head>
+<body>
+<div th:switch="${students}">
+    <h2 th:case="null">No student found!</h2>
+    <div th:case="*">
+        <h2>Student List</h2>
+        <table>
+            <thead>
+            <div>
+                <form th:action="@{students}">
+                    Search: <input type="text" name="keyword"/>
+                    &nbsp;
+                    <input type="submit" value="Apply"/>
+                </form>
+                <p><a href="/book-create">Add student</a></p>
+            </div>
+            <tr>
+                <th>Id</th>
+                <th>studentName</th>
+                <th> team</th>
+                <th>grade</th>
+                <th>gradeTwo</th>
+                <th>visit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.studentName}"></td>
+                <td th:text="${student.team}"></td>
+                <td th:text="${student.grade}"></td>
+                <td th:text="${student.gradeTwo}"></td>
+                <td th:text="${student.visit}"></td>
+                <td><a th:href="@{book-update/{id}(id=${student.id})}">Edit</a></td>
+                <td><a th:href="@{book-delete/{id}(id=${student.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
