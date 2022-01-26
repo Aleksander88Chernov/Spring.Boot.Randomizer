@@ -14,13 +14,32 @@ public class StudentService   {
 
 @Autowired
     public StudentService(StudentRepository studentRepository){
-        this.studentRepository = studentRepository;
+
+    this.studentRepository = studentRepository;
+    }
+
+    public Student findById(Long id){
+
+        return studentRepository.getById(Math.toIntExact(id));
     }
 
     public List<Student> findAll(String keyword) {
+        if (keyword != null)
+            return studentRepository.listAll(keyword);
+        else
 
         return studentRepository.findAll();
     }
 
+    public Student saveStudent(Student student){
+
+        return studentRepository.save(student);
+    }
+
+    public void deleteById(Long id){
+
+        studentRepository.deleteById(Math.toIntExact(id));
+    }
 }
+
 

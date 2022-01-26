@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student,Integer> {
 
-  //  List<Student> listAll(String keyword);
+    List<Student> listAll(String keyword);
 }
