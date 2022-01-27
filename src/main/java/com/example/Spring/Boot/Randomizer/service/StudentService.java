@@ -18,9 +18,9 @@ public class StudentService   {
     this.studentRepository = studentRepository;
     }
 
-    public Student findById(Long id){
+    public Student findById(Integer id){
 
-        return studentRepository.getById(Math.toIntExact(id));
+        return studentRepository.getById(id);
     }
 
     public List<Student> findAll(String keyword) {
@@ -36,9 +36,9 @@ public class StudentService   {
         return studentRepository.save(student);
     }
 
-    public void deleteById(Long id){
+    public void deleteById(Integer id){
 
-        studentRepository.deleteById(Math.toIntExact(id));
+        studentRepository.deleteById(id);
     }
 }
 
