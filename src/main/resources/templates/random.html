@@ -26,10 +26,10 @@ html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
           <td th:text="${student.value.studentName}">studentName</td>
           <td th:text="${student.value.team}">team</td>
-          <td><a th:href="@{grade/{id}(id=${student.value.id})}">Edit</a></td>
+          <td><a th:href="@{/grade/{id}(id=${student.value.id})}">Edit</a></td>
           <td th:text="${student.key.studentName}">studentName</td>
           <td th:text="${student.key.team}">team</td>
-          <td><a th:href="@{grade/{id}(id=${student.key.id})}">Edit</a></td>
+          <td><a th:href="@{/grade/{id}(id=${student.key.id})}">Edit</a></td>
 
       </tr>
 

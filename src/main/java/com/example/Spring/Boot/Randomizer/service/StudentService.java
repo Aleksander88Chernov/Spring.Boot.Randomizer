@@ -40,5 +40,8 @@ if(keyword !=null)
         return studentRepository.save(student);
     }
 
+    public Student findById(Integer id) {
+      return   studentRepository.getOne(id);
+    }
 }
 

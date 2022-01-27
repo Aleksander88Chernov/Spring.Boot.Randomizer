@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.HashMap;
@@ -53,6 +54,18 @@ public class StudentController {
     public String createUser(Student student){
         studentService.saveBook(student);
         return "redirect:/student";
+    }
+    @GetMapping("/grade/{id}")
+    public String updateBookForm(@PathVariable("id") Integer id, Model model){
+        Student student = studentService.findById(id);
+        model.addAttribute("student", student);
+        return "grade-student";
+    }
+
+    @PostMapping("/grade-student")
+    public String updateStudent(Student student){
+        studentService.saveBook(student);
+        return "redirect:/random";
     }
 
 
