@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Update student</title>
+</head>
+<body>
+<form action="#" th:action="@{/student-update}" th:object="${student}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <br/>
+    <label for="student">Student</label>
+    <input type="text" th:field="*{student}" id="student" placeholder="Student">
+    <br/>
+    <br/>
+    <label for="team">Team</label>
+    <input type="text" th:field="*{team}" id="team" placeholder="Team">
+    <br/>
+    <br/>
+    <label for="grade">Grade</label>
+    <input type="text" th:field="*{grade}" id="grade" placeholder="Grade">
+    <br/>
+    <br/>
+    <label for="grade_two">GradeTwo</label>
+    <input type="text" th:field="*{grade_two}" id="grade_two" placeholder="Grade">
+    <br/>
+    <br/>
+    <label for="visit">Visit</label>
+    <input type="text" th:field="*{visit}" id="visit" placeholder="Visit">
+    <br/>
+    <br/>
+    <input type="submit" value="Update Student">
+</form>
+</body>
+</html>

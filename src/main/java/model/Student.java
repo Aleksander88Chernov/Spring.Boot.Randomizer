@@ -28,4 +28,6 @@ public class Student {
 
     @Column(name = "visit")
     private String visit;
+
+
 }
