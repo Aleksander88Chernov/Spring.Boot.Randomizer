@@ -22,11 +22,11 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/student")
+    @GetMapping("/students")
     public String findAll(Model model , @Param("keyword") String keyword){
 
-        List<Student> student = studentService.findAll(keyword);
-        model.addAttribute("student",student );
+        List<Student> students = studentService.findAll(keyword);
+        model.addAttribute("students",students );
         return "student_list";
     }
     @GetMapping("/student-create")
@@ -38,17 +38,17 @@ public class StudentController {
     @PostMapping("/student-create")
     public String createStudent(Student student){
         studentService.saveStudent(student);
-        return "redirect:/student";
+        return "redirect:/students";
     }
 
-    @GetMapping("/book-delete/{id}")
-    public String deleteStudent(@PathVariable("id") Long id){
+    @GetMapping("/student-delete/{id}")
+    public String deleteStudent(@PathVariable("id") Integer id){
         studentService.deleteById(id);
-        return "redirect:/student";
+        return "redirect:/students";
     }
 
     @GetMapping("/student-update/{id}")
-    public String updateStudentForm(@PathVariable("id") Long id, Model model){
+    public String updateStudentForm(@PathVariable("id") Integer id, Model model){
         Student student = studentService.findById(id);
         model.addAttribute("student", student);
         return "student-update";
@@ -57,7 +57,7 @@ public class StudentController {
     @PostMapping("/student-update")
     public String updateStudent(Student student){
         studentService.saveStudent(student);
-        return "redirect:/student";
+        return "redirect:/students";
     }
 }
 
