@@ -12,13 +12,16 @@
         <table>
             <thead>
             <div>
-                <form th:action="@{students}">
+                <form th:action="@{/keyword}">
                     Search: <input type="text" name="keyword"/>
                     &nbsp;
                     <input type="submit" value="Apply"/>
                 </form>
-                <p><a href="/book-create">Add student</a></p>
+                <p><a href="/student-add">Add student</a></p>
+                <p><a href="/random">random</a>
+
             </div>
+            <table border="1">
             <tr>
                 <th>Id</th>
                 <th>studentName</th>
@@ -39,6 +42,7 @@
                 <td><a th:href="@{book-update/{id}(id=${student.id})}">Edit</a></td>
                 <td><a th:href="@{book-delete/{id}(id=${student.id})}">Delete</a></td>
             </tr>
+            </table>
             </tbody>
         </table>
     </div>
