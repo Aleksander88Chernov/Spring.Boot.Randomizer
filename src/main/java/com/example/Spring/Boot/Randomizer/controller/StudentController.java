@@ -42,7 +42,7 @@ public class StudentController {
     }
 
     @GetMapping("/student-add")
-    public String createStudentForm(Student student){
+    public String createStudentForm(){
         return "student-add";
     }
 

@@ -4,8 +4,11 @@ import com.example.Spring.Boot.Randomizer.model.Student;
 import com.example.Spring.Boot.Randomizer.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class StudentService {
@@ -19,6 +22,7 @@ public class StudentService {
 
     public LinkedHashMap<Student, Student> getMap() {
        List<Student> list = studentRepository.findAll();
+        Collections.shuffle(list);
         LinkedHashMap<Student, Student> map = new LinkedHashMap<>();
         for (int i = 0;i<list.size()-1;i++){
             map.put(list.get(i),list.get(i+1));
@@ -44,6 +48,7 @@ public class StudentService {
 
     public void deleteById(Integer id)
     {
+
         studentRepository.deleteById(id);
     }
 }
