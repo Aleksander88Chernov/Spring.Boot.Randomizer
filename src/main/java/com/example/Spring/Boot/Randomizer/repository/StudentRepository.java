@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student,Integer> {
     @Query( "SELECT s FROM Student s WHERE s.studentName LIKE ?1%"
-            + "OR s.team LIKE ?1%")
+            + "OR s.team LIKE ?1%"
+            + "OR s.homework LIKE ?1%")
     List<Student> listAll(String keyword);
 }

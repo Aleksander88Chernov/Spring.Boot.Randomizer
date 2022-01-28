@@ -11,7 +11,7 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idstudent")
+    @Column(name = "id")
     private int id;
 
     @Column(name = "student_name")
@@ -21,11 +21,8 @@ public class Student {
     private int team;
 
     @Column(name = "grade")
-    private int grade;
+    private double grade;
 
-    @Column(name = "grade_two")
-    private int gradeTwo;
-
-    @Column(name = "visit")
-    private String visit;
+    @Column(name = "homework")
+    private String homework;
 }

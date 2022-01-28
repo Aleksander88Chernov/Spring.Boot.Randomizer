@@ -12,23 +12,22 @@
         <table>
             <thead>
             <div>
-                <form th:action="@{/keyword}">
+                <form th:action="@{/student}">
                     Search: <input type="text" name="keyword"/>
                     &nbsp;
                     <input type="submit" value="Apply"/>
                 </form>
                 <p><a href="/student-add">Add student</a></p>
-                <p><a href="/random">random</a>
+                <p><a href="/random">Random</a>
 
             </div>
             <table border="1">
             <tr>
                 <th>Id</th>
                 <th>studentName</th>
-                <th> team</th>
+                <th>team</th>
                 <th>grade</th>
-                <th>gradeTwo</th>
-                <th>visit</th>
+                <th>homework</th>
             </tr>
             </thead>
             <tbody>
@@ -37,10 +36,9 @@
                 <td th:text="${student.studentName}"></td>
                 <td th:text="${student.team}"></td>
                 <td th:text="${student.grade}"></td>
-                <td th:text="${student.gradeTwo}"></td>
-                <td th:text="${student.visit}"></td>
-                <td><a th:href="@{book-update/{id}(id=${student.id})}">Edit</a></td>
-                <td><a th:href="@{book-delete/{id}(id=${student.id})}">Delete</a></td>
+                <td th:text="${student.homework}"></td>
+                <td><a th:href="@{edit-student/{id}(id=${student.id})}">Edit</a></td>
+                <td><a th:href="@{student-delete/{id}(id=${student.id})}">Delete</a></td>
             </tr>
             </table>
             </tbody>

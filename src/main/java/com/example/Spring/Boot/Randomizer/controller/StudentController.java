@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 @Controller
 public class StudentController {
@@ -20,41 +18,40 @@ public class StudentController {
 
     @Autowired
     public StudentController(StudentService studentService) {
-
         this.studentService = studentService;
     }
 
     @GetMapping("/student")
     public String findAll(Model model , @Param("keyword") String keyword){
-
         java.util.List<Student> students = studentService.findAll(keyword);
         model.addAttribute("students",students );
         return "student_list";
     }
 
     @GetMapping("/random")
-    public String random(Model model,@Param("keyword") String keyword){
-        List<Student> studentList = studentService.findAll(keyword);
-        Map<Student,Student> student=new HashMap<>();
-
-
-        student.put(studentList.get(0),studentList.get(1));
-        student.put(studentList.get(1),studentList.get(2));
-        student.put(studentList.get(2),studentList.get(3));
+    public String random(Model model){
+        LinkedHashMap<Student,Student> student = studentService.getMap();
         model.addAttribute("students",student);
         return "random";
     }
+
+    @GetMapping("/student-delete/{id}")
+    public String deleteBook(@PathVariable("id") Integer id){
+        studentService.deleteById(id);
+        return "redirect:/student";
+    }
+
     @GetMapping("/student-add")
     public String createStudentForm(Student student){
-
         return "student-add";
     }
 
     @PostMapping("/student-add")
     public String createUser(Student student){
-        studentService.saveBook(student);
+        studentService.saveStudent(student);
         return "redirect:/student";
     }
+
     @GetMapping("/grade/{id}")
     public String updateBookForm(@PathVariable("id") Integer id, Model model){
         Student student = studentService.findById(id);
@@ -64,10 +61,21 @@ public class StudentController {
 
     @PostMapping("/grade-student")
     public String updateStudent(Student student){
-        studentService.saveBook(student);
+        studentService.saveStudent(student);
         return "redirect:/random";
     }
 
+    @GetMapping("/edit-student/{id}")
+    public String updateStudentForm(@PathVariable("id") Integer id, Model model){
+        Student student = studentService.findById(id);
+        model.addAttribute("student", student);
+        return "student-edit";
+    }
 
+    @PostMapping("/edit-student")
+    public String editStudent(Student student){
+        studentService.saveStudent(student);
+        return "redirect:/student";
+    }
 
 }

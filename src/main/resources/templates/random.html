@@ -1,4 +1,5 @@
-html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>Student</title>
@@ -8,31 +9,31 @@ html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
   <h2 th:case="null">No student found!</h2>
   <div th:case="*">
     <h2>Random</h2>
-
-
-    <table border="1">
+      <p><a href="/student">Student list</a></p>
+      <table border="1">
       <thead>
       <tr>
-        <th>Задает вопрос</th>
-        <th> team</th>
-        <th>оценка</th>
-        <th>Отвечает</th>
-        <th>team</th>
-        <th>оценка</th>
+          <th>Задает вопрос</th>
+          <th> Команда</th>
+          <th>Балы</th>
+          <th>Оценить студента</th>
+          <th>Отвечает</th>
+          <th>Команда</th>
+          <th>Балы</th>
+          <th>Оценить студента</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="student : ${students}">
-
-          <td th:text="${student.value.studentName}">studentName</td>
-          <td th:text="${student.value.team}">team</td>
-          <td><a th:href="@{/grade/{id}(id=${student.value.id})}">Edit</a></td>
           <td th:text="${student.key.studentName}">studentName</td>
           <td th:text="${student.key.team}">team</td>
-          <td><a th:href="@{/grade/{id}(id=${student.key.id})}">Edit</a></td>
-
+          <td th:text="${student.key.grade}">team</td>
+          <td><a th:href="@{/grade/{id}(id=${student.key.id})}">Оценить</a></td>
+          <td th:text="${student.value.studentName}">studentName</td>
+          <td th:text="${student.value.team}">team</td>
+          <td th:text="${student.value.grade}">team</td>
+          <td><a th:href="@{/grade/{id}(id=${student.value.id})}">Оценить</a></td>
       </tr>
-
       </tbody>
     </table>
   </div>

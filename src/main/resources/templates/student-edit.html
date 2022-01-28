@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Grade student</title>
+    <title>Edit student</title>
 </head>
 <body>
-<form action="#" th:action="@{/grade-student}" th:object="${student}" method="post">
+<form action="#" th:action="@{/edit-student}" th:object="${student}" method="post">
     <label for="id">ID</label>
     <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
     <br/>
@@ -22,11 +22,11 @@
     <input type="text" th:field="*{grade}" id="grade" placeholder="Grade">
     <br/>
     <br/>
-    <label for="homework">Visit</label>
+    <label for="homework">Homework</label>
     <input type="text" th:field="*{homework}" id="homework" placeholder="homework">
     <br/>
     <br/>
-    <input type="submit" value="Grade student">
+    <input type="submit" value="Edit student">
 </form>
 </body>
 </html>
