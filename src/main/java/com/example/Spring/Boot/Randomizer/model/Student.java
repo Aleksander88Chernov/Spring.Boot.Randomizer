@@ -23,9 +23,6 @@ public class Student {
     @Column(name = "grade")
     private int grade;
 
-    @Column(name = "grade_two")
-    private int gradeTwo;
-
-    @Column(name = "visit")
+    @Column(name = "homework")
     private String visit;
 }
